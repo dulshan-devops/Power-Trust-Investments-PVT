@@ -1,0 +1,5 @@
+ALTER TABLE `loan_list` CHANGE `date_released` `date_released` DATETIME NULL;
+ALTER TABLE `borrowers` CHANGE `date_created` `date_created` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP; 
+LTER TABLE `users` CHANGE `doctor_id` `doctor_id` INT(30) NULL DEFAULT '0';
+ALTER TABLE `users` CHANGE `address` `address` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL; 
+ALTER TABLE `users` CHANGE `contact` `contact` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL; 

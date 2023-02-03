@@ -1,0 +1,56 @@
+DATE : 2022-12-26
+#+ remove middle name in borrowes modal
+#+ change tax id to NIC in loans page modal 
+#+ reference number to Loan Agrement Number
+#+ change Borrowe to member_name in new load application modal
+#+ new input to get mobile number in gurantor new load application modal
+#+ remove signature new load application modal
+#+ auto complete staff list new loan application modal
+#+ add new input to get cash method
+#+ remove signature in new loan application modal
+#+ side bar new tab to add groups
+
+DATE : 2022-12-28
+#+ side bar new tab to approve loan application and page developments
+#+ developments approve loans page
+    table columns = load_id , name , mobile , view_more_btn
+
+DATE : 2023-01-03
+#+ remove signon date and date
+#+ remove member name and nic in new loan application
+#+ remove signature
+#+ auto select group and village $ change branch , center
+# set view loan application modal to reports page view personal btn
+
+DATE : 2023-01-04
+#+ borrowers not save issue
+#+ save garantor details in db
+
+#+ add new btn to print in payment modal
+#+ payment receipt data -> 
+    -> load id
+    -> name
+    -> payment amt
+    -> outsanding (total payble)
+    -> monthly payment (warika)
+    -> before balance until payment
+    -> date
+
+DATE : 2023-01-12
+#+ loan_list not save issue in db 
+#+ history view developments in reports page 
+#+ need show arries in payment modal 
+
+#+ remove payee in payments
+#+ need reset after payment other inputs in payment page
+
+
+
+
+
+
+
+
+
+
+

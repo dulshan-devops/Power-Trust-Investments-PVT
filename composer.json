@@ -1,0 +1,21 @@
+{
+    "name": "nazgul/loan",
+    "description": "loan management system for power trust",
+    "type": "project",
+    "require": {
+        "composer": "^2.2"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "thnzrmzwr",
+            "email": "thnzrmzwr@gmail.com"
+        }
+    ],
+    "minimum-stability": "beta"
+}

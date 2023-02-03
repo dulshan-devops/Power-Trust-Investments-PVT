@@ -1,0 +1,3 @@
+#monthly payment
+#penlty_rate
+#ex date
