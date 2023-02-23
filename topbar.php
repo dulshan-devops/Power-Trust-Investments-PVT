@@ -15,11 +15,11 @@
   		<div class="col-md-1 float-left" style="display: flex;">
   			<div class="logo">
   				<!-- <span class="fa fa-money-bill-wave"></span> -->
-          <img src="https://media.istockphoto.com/id/1265397540/vector/business-profit-chart-icon.jpg?s=612x612&w=0&k=20&c=XLoVmfcZOEfJg35S96ItOOUwntpc3swGOV_HwVaLEvI=" alt="" style="height: 27px; width : 27px;">
+          <img src="assets/img/log-logo.jpeg" alt="" style="height: 27px; width : 27px;">
   			</div>
   		</div>
       <div class="col-md-4 float-left text-white">
-        <large><b>Loan Management System</b></large>
+        <large><b>Power Trust Invetments</b></large>
       </div>
 	  	<div class="col-md-2 float-right text-white">
 	  		<a href="ajax.php?action=logout" class="text-white"><?php echo $_SESSION['login_name'] ?> <i class="fa fa-power-off"></i></a>

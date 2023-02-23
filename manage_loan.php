@@ -67,7 +67,8 @@ if (isset($_GET['id'])) {
 				</div>
 				<div class="form-group col-md-6">
 					<label class="control-label">Group</label>
-					<input readonly type="text" name="group" class="form-control text-right" step="any" id="group" value="<?php echo isset($center) ? $center : '' ?>">
+					<input readonly type="text" name="group_name" class="form-control text-right" step="any" id="group_name" value="<?php echo isset($center) ? $center : '' ?>">
+					<input type="hidden" name="group" class="form-control text-right" step="any" id="group" value="<?php echo isset($center) ? $center : '' ?>">
 				</div>
 			</div>
 
@@ -442,7 +443,8 @@ if (isset($_GET['id'])) {
 				// console.log(resp)
 
 				document.getElementById("village").value = resp.village.village
-				document.getElementById("group").value = resp.user.group
+				document.getElementById("group_name").value = resp.user.group
+				document.getElementById("group").value = resp.user.id
 				document.getElementById("mobile").value = resp.user.contact_no
 				document.getElementById("address").value = resp.user.address
 			}

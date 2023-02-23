@@ -50,7 +50,7 @@
 								$paid = $payments->num_rows;
 								$offset = $paid > 0 ? " offset $paid ": "";
 								if($row['status'] == 2):
-									$next = $conn->query("SELECT * FROM loan_schedules where loan_id = '".$row['id']."'  order by date(date_due) asc limit 1 $offset ")->fetch_assoc()['date_due'];
+									// $next = $conn->query("SELECT * FROM loan_schedules where loan_id = '".$row['id']."'  order by date(date_due) asc limit 1 $offset ")->fetch_assoc()['date_due'];
 								endif;
 								$sum_paid = 0;
 								while($p = $payments->fetch_assoc()){

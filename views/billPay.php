@@ -41,15 +41,15 @@ $villages_data = $villages_data->fetch_array(MYSQLI_ASSOC);
 
 
 ?>
-<section id="print" class="center" style="background-color : white; margin-top : 10px;">
+<section id="print" class="center" style="background-color : white; margin-top : 10px;height:55rem;width:45rem">
     <style>
-        body {
+        /* body {
             font-size: 10px;
             font-family: Calibri;
-        }
+        } */
 
         table {
-            font-size: 10px;
+            font-size: 25px;
             font-family: Calibri;
         }
 
@@ -80,8 +80,11 @@ $villages_data = $villages_data->fetch_array(MYSQLI_ASSOC);
     </style>
 
     <header>
-        <h3 class="center">Mercantile Investment and Finance PLC</h3>
+        <h3 class="center">POWER TRUST INVESTMENTS (PVT) LTD</h3>
         <p style="width:100%">--------------------------------------------------------------------------------------------------------------------</p>
+        <p class="center"><span>Date: <?php echo date("Y-m-d h:i:sa") ?></span></p>
+        <p style="width:100%">--------------------------------------------------------------------------------------------------------------------</p>
+
         <!-- <p class="center">Micro Finance Company</p>
         <p class="center"><span>Contact Us: 0273 279 422</span> <br> <span>Email: mloancompany@gmail.com</span></p>
         <p style="border:solid 1px gray"></p> -->
@@ -89,40 +92,48 @@ $villages_data = $villages_data->fetch_array(MYSQLI_ASSOC);
     <br>
     <table style="width:100%; margin-left : 60px;">
 
+    <tr>
+            <td align="left">Branch</td>
+            <td align="left"> Balangoda (BG)</td>
+        </tr>
         <tr>
             <td align="left">Mem Name</td>
             <td align="left"> <?php echo $loan_data['name'] ?></td>
         </tr>
         <tr>
             <td align="left">Mem Number</td>
-            <td align="left"><?php echo $loan_data['ref_no'] ?></td>
+            <td align="left"> <?php echo $loan_data['payee'] ?></td>
         </tr>
         <tr>
+            <td align="left">Acc No</td>
+            <td align="left"><?php echo $loan_data['ref_no'] ?></td>
+        </tr>
+        <!-- <tr>
             <td align="left">Village</td>
             <td align="left"><?php echo $villages_data['village'] ?></td>
         </tr>
         <tr>
             <td align="left">Group</td>
             <td align="left"><?php echo $groups_data['group'] ?></td>
-        </tr>
+        </tr> -->
     </table>
     <tr>
-        <h5 class="center mt-3">MFR Payment</h5>
+        <h5 class="center mt-3">Payment Details</h5>
         <p style="width:100%">-----------------------------------------------------------------------------------------------</p>
     </tr>
-    <table style="width:100%; margin-left : 60px">
+    <table style="width:100%; margin-left : 40px">
         <!-- <tr>
             <td align="left">Amount</td>
             <td align="right"> <?php echo number_format($loan_data['amount'], 2) ?></td>
         </tr> -->
 
         <tr>
-            <td align="left">Loan Amount</td>
+            <td align="left">Loan Amt</td>
             <!-- check this outsanding -->
             <td align="left"><?php echo number_format($row['amount'], 2) ?></td>
         </tr>
         <tr>
-            <td align="left">Total Payble</td>
+            <td align="left">Total Payble (Capital+Int)</td>
             <!-- check this outsanding -->
             <td align="left"><?php echo number_format($total_payble, 2) ?></td>
         </tr>
@@ -131,13 +142,13 @@ $villages_data = $villages_data->fetch_array(MYSQLI_ASSOC);
             <td align="left"><?php echo number_format($total_paid['total_paid'], 2) ?></td>
         </tr>
         <tr>
-            <td align="left">Monthly Payment</td>
+            <td align="left">Rent Amount</td>
             <td align="left"><?php echo number_format($monthly, 2) ?></td>
         </tr>
-        <tr>
+        <!-- <tr>
             <td align="left">Date</td>
             <td align="left"><?php echo date("Y-m-d h:i:sa") ?></td>
-        </tr>
+        </tr> -->
     </table>
     <tr style="margin: 10px;">
         <p style="width:100%">-----------------------------------------------------------------------------------------------</p>

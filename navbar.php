@@ -11,7 +11,9 @@
 				<a href="index.php?page=borrowers" class="nav-item nav-borrowers"><span class='icon-field'><i class="fa fa-user-friends"></i></span> Borrowers</a>
 				<a href="index.php?page=plan" class="nav-item nav-plan"><span class='icon-field'><i class="fa fa-list-alt"></i></span> Loan Plans</a>	
 				<a href="index.php?page=loan_type" class="nav-item nav-loan_type"><span class='icon-field'><i class="fa fa-th-list"></i></span> Loan Types</a>		
-				<a href="index.php?page=reports" class="nav-item nav-reports"><span class='icon-field'><i class="fa fa-th-list"></i></span> Reports</a>		
+				<a href="index.php?page=reports" class="nav-item nav-reports"><span class='icon-field'><i class="fa fa-th-list"></i></span> Detail Reports</a>
+				<a href="index.php?page=weekly-reports" class="nav-item nav-reports"><span class='icon-field'><i class="fa fa-th-list"></i></span> Weekly Reports</a>	
+				<a href="index.php?page=repayment_sheet" class="nav-item nav-reports"><span class='icon-field'><i class="fa fa-th-list"></i></span> Repayment Sheet</a>	
 				<?php if($_SESSION['login_type'] == 1): ?>
 				<a href="index.php?page=manage-villages" class="nav-item nav-manage-groups"><span class='icon-field'><i class="fa fa-users"></i></span> Villages</a>
 				<a href="index.php?page=manage-groups" class="nav-item nav-manage-groups"><span class='icon-field'><i class="fa fa-users"></i></span> Groups</a>

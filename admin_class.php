@@ -229,7 +229,7 @@ class Action
 		$loan_data .= " , amount = '$amount' ";
 		$loan_data .= " , purpose = '$purpose' ";
 		$loan_data .= " , plan_id = '$plan_id' ";
-		$loan_data .= " , group_id = '2' ";
+		$loan_data .= " , group_id = '$group' ";
 		$loan_data .= " , monthly_payment = '$monthlyPaybleAmt' ";
 		$loan_data .= " , penlty_amount = '$penaltyAmt' ";
 		$loan_data .= " , status = '0' ";
@@ -451,7 +451,7 @@ class Action
 	function load_user()
 	{
 		extract($_POST);
-		$result = $this->db->query("SELECT borrowers.contact_no, borrowers.address, borrowers.email,borrowers.nic,groups.village_id, groups.group FROM borrowers INNER JOIN groups ON borrowers.group_id=groups.id WHERE borrowers.id='" . $user_id . "';");
+		$result = $this->db->query("SELECT borrowers.contact_no, borrowers.address, borrowers.email,borrowers.nic,groups.village_id, groups.group , groups.id FROM borrowers INNER JOIN groups ON borrowers.group_id=groups.id WHERE borrowers.id='" . $user_id . "';");
 		$user_data = $result->fetch_array(MYSQLI_ASSOC);
 
 		$village_result = $this->db->query("SELECT villages.village FROM villages INNER JOIN groups ON groups.village_id=villages.id WHERE groups.village_id='" . $user_data['village_id'] . "';");

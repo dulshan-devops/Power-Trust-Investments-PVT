@@ -16,24 +16,27 @@
         <?php
         include 'db_connect.php';
         extract($_POST);
-
         if ($event == 0) {
             $qry = "SELECT * from loan_list;";
             $loan_list = $conn->query($qry);
         } else if ($event == 1) {
+            $qry = "SELECT * FROM loan_list WHERE ref_no LIKE '%".$loan_facility."%';";
+            $loan_list = $conn->query($qry);
+        } else if ($event == 2) {
             //village_id
             $village_id = $conn->query("SELECT * FROM villages WHERE village = '" . $village . "';");
             $village_id = $village_id->fetch_array(MYSQLI_ASSOC);
-            $village_id = $village_id['id'];
+
+            //get groups data related to selected village
+            $groups = $conn->query("SELECT * FROM groups WHERE village_id = '" . $village_id['id'] . "';");
+            $groups = $groups->fetch_array(MYSQLI_ASSOC);
 
             //all loan_list in grp_id
-            $loan_list = $conn->query("SELECT * FROM loan_list WHERE group_id = '" . $village_id . "';");
-        } else if ($event == 2) {
+            $loan_list = $conn->query("SELECT * FROM loan_list WHERE group_id = '" . $groups['id'] . "';");
+        } else if ($event == 3) {
             //get groups data related to selected village
             $groups = $conn->query("SELECT * FROM groups WHERE village_id = '" . $village . "';");
             $groups = $groups->fetch_array(MYSQLI_ASSOC);
-            // echo json_encode($village);
-            // echo json_encode($groups['id']);
 
             //get loan_list data related to groups data
             $loan_list = $conn->query("SELECT * FROM loan_list WHERE group_id = '" . $groups['id'] . "';");

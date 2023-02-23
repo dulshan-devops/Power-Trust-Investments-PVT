@@ -1,37 +1,32 @@
+<?php include 'db_connect.php' ?>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12 mt-2">
             <form class="form-inline" id="" method="POST">
-                <div class="form-group mx-sm-3 mb-2">
-                    <div class="form-group" style="margin-right: 5px;" id="filter_village">
-
-                    </div>
-
-                    <input class="form-control form-control-sm" type="text" placeholder="Enter a Loan Facility No" style="margin-right: 5px; width : 15rem;" name="village_group" id="village_group">
-
-                    <div class="form-group" style="margin-right: 5px;">
-                        <label for="exampleFormControlSelect1" class="form-control-sm">Filter By</label>
-                        <select class="form-control form-control-sm" id="filter_by" onchange="setup_filter(this.value)">
-                            <option value="1">Loan Facility No</option>
-                            <option value="2">Village</option>
-                            <option value="3">Group ID</option>
-                        </select>
-                    </div>
-
-
-                    <button type="button" class="btn btn-success float-right btn-sm" id="filter_data"><i class="fa fa-search" style="margin-right: 5px;"></i> Search</button>
+                <div class="form-group mx-sm-3 mb-2" style="width : 20rem;">
+                    <select name="village" id="" class="select2" style="margin-right: 5px;" name="village" id="village" onchange="setup_weekly_report()">
+                        <option value=""></option>
+                        <?php
+                        $villages_data = $conn->query("SELECT * FROM villages order by `village` ASC;");
+                        while ($row = $villages_data->fetch_assoc()) :
+                        ?>
+                            <option value="<?php echo $row['id'] ?>"><?php echo $row['village'] ?></option>
+                        <?php endwhile; ?>
+                    </select>
                 </div>
-
             </form>
-
+            <!-- Jumbotron -->
+            <div class="p-5 text-center bg-light" id="jumb_container" >
+            <img src="assets/img/log-logo.jpeg" alt="" style="width:150px; height : 150px; margin:auto;">
+                <h1 class="mb-3">Power Trust Investments (PVT) Weekly Reports</h1>
+                <h4 class="mb-3">select village and you can print report related to village</h4>
+            </div>
+            <!-- Jumbotron -->
         </div>
     </div>
-    <div class="row mt-2">
-        <div class="card col-lg-12">
-            <div class="card-body" id="table_container">
+    <div class="row mt-2" id="report_container">
 
-            </div>
-        </div>
     </div>
 </div>
 
@@ -231,6 +226,32 @@
 </div>
 
 <script>
+    $('.select2').select2({
+        placeholder: "Please select here",
+        width: "100%"
+    })
+
+    function setup_weekly_report() {
+
+        if ($('[name="village"]').val() != "") {
+            start_load()
+            $.ajax({
+                url: 'weekly_report.php',
+                method: "POST",
+                data: {
+                    village_id: $('[name="village"]').val()
+                },
+                success: function(resp) {
+                    $('#report_container').html(resp)
+                    end_load();
+                }
+            })
+        } else {
+            alert_toast("Please enter a village", "danger");
+        }
+
+    }
+
     function view_modal($application_id) {
         start_load()
         $.ajax({
@@ -309,18 +330,18 @@
     //load filtered data to table
     $('#filter_data').click(function() {
         var filter_by = document.getElementById("filter_by").value;
-        var village, group , loan_facility;
+        var village, group, loan_facility;
 
         if (filter_by == 1) {
             loan_facility = document.getElementById("village_group").value;
-            setup_table(1, "", "" , loan_facility);
+            setup_table(1, "", "", loan_facility);
         } else if (filter_by == 2) {
             village = document.getElementById("village_group").value;
-            setup_table(2, village, "" , "");
+            setup_table(2, village, "", "");
         } else if (filter_by == 3) {
             village = document.getElementById("child_select").value;
             group = document.getElementById("village_group").value;
-            setup_table(3, village, group , "");
+            setup_table(3, village, group, "");
         }
 
     })
@@ -328,10 +349,10 @@
     window.addEventListener("load", (event) => {
 
         //load full data to table
-        setup_table(0, "", "" , "");
+        setup_table(0, "", "", "");
     });
 
-    function setup_table(event, village, group , loan_facility) {
+    function setup_table(event, village, group, loan_facility) {
         start_load()
         $.ajax({
             url: 'reports_table.php',
@@ -340,7 +361,7 @@
                 event: event,
                 village: village,
                 group: group,
-                loan_facility : loan_facility,
+                loan_facility: loan_facility,
             },
             success: function(resp) {
                 $('#table_container').html(resp)
@@ -395,4 +416,5 @@
             document.getElementById('village_group').placeholder = 'Enter a Group ID';
         }
     }
+
 </script>

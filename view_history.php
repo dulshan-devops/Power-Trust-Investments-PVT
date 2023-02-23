@@ -37,11 +37,14 @@
                 include 'db_connect.php';
                 $payments = $conn->query("SELECT * FROM payments where loan_id=" . $_GET['id']);
 
-                $ref_id = $conn->query("SELECT `ref_no` AS load_id FROM loan_list where id=" . $_GET['id']);
-                $ref_id = $ref_id->fetch_array(MYSQLI_ASSOC);
+                $loan_list = $conn->query("SELECT * FROM loan_list where id=" . $_GET['id']);
+                $loan_list = $loan_list->fetch_array(MYSQLI_ASSOC);
 
-                $monthly_payble = $conn->query("SELECT `monthly_payment` AS monthly_payble FROM loan_list where id=" . $_GET['id']);
-                $monthly_payble = $monthly_payble->fetch_array(MYSQLI_ASSOC);
+                $loan_plan_data = $conn->query("SELECT * FROM loan_plan where id = '" . $loan_list['plan_id'] . "' ");
+                $loan_plan_data = $loan_plan_data->fetch_array(MYSQLI_ASSOC);
+
+                //total payble
+                $total_payble = $loan_plan_data['months'] * $loan_list['monthly_payment'];
 
                 //need validate if payments = null user not have do any payments
 
@@ -56,7 +59,7 @@
                         </td>
                         <td>
                             <center>
-                                0
+                            <?php echo number_format($total_payble, 2) ?>
                             </center>
                         </td>
                         <td>
@@ -66,7 +69,7 @@
                         </td>
                         <td>
                             <center>
-                                <?php echo number_format($monthly_payble['monthly_payble'] - $row['amount'], 2) ?>
+                                <?php echo number_format($loan_list['monthly_payment'] - $row['amount'], 2) ?>
                             </center>
                         </td>
                         <td>
