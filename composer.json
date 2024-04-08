@@ -1,5 +1,5 @@
 {
-    "name": "nazgul/loan",
+    "name": "novatech/micro-finance",
     "description": "loan management system for power trust",
     "type": "project",
     "require": {
@@ -13,8 +13,8 @@
     },
     "authors": [
         {
-            "name": "thnzrmzwr",
-            "email": "thnzrmzwr@gmail.com"
+            "name": "nova-technologies",
+            "email": "dilshan.devops@gmail.com"
         }
     ],
     "minimum-stability": "beta"
